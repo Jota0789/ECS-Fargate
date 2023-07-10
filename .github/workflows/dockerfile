@@ -1,0 +1,32 @@
+FROM wordpress:6.1.1   
+
+WORKDIR /var/www/html
+ 
+COPY /Tehuentec/wp-includes /var/www/html/wp-includes
+COPY /Tehuentec/wp-content /var/www/html/wp-content
+COPY /Tehuentec/wp-admin /var/www/html/wp-admin 
+COPY /Tehuentec/.htaccess /var/www/html/
+COPY /Tehuentec/index.php /var/www/html/
+COPY /Tehuentec/license.txt /var/www/html/
+COPY /Tehuentec/readme.html /var/www/html/
+COPY /Tehuentec/wp-activate.php /var/www/html/
+COPY /Tehuentec/wp-blog-header.php /var/www/html/
+COPY /Tehuentec/wp-config-sample.php /var/www/html/
+COPY /Tehuentec/wp-config.php /var/www/html/
+COPY /Tehuentec/wp-cron.php /var/www/html/
+COPY /Tehuentec/wp-links-opml.php /var/www/html/
+COPY /Tehuentec/wp-load.php /var/www/html/
+COPY /Tehuentec/wp-login.php /var/www/html/
+COPY /Tehuentec/wp-mail.php /var/www/html/
+COPY /Tehuentec/wp-settings.php /var/www/html/
+COPY /Tehuentec/wp-signup.php /var/www/html/
+COPY /Tehuentec/wp-trackback.php /var/www/html/
+COPY /Tehuentec/xmlrpc.php /var/www/html/
+
+RUN chown -R www-data:www-data /var/www/html/wp-content
+RUN chmod -R 755 /var/www/html/wp-content
+
+EXPOSE 80 
+
+
+CMD ["apache2-foreground"]
